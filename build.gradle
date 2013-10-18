@@ -22,7 +22,52 @@ android {
     }
 }
 
+signing {
+    required { has("release") && gradle.taskGraph.hasTask("uploadArchives") }
+    sign configurations.archives
+}
+
+uploadArchives {
+    configuration = configurations.archives
+    repositories.mavenDeployer {
+        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+        repository(url: sonatypeRepo) {
+            authentication(userName: sonatypeUsername,
+                    password: sonatypePassword)
+        }
+
+        pom.project {
+            name 'Android Intro View'
+            packaging 'aar'
+            description 'Intro View library for Android'
+            url https://github.com/vladstoick/AndroidIntroView'
+
+            scm {
+                url 'scm:git@github.com:vladstoick/AndroidIntroView.git'
+                connection 'scm:git@github.com:vladstoick/AndroidIntroView.git'
+                developerConnection 'scm:git@github.com:vladstoick/AndroidIntroView.git'
+            }
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+
+            developers {
+                developer {
+                    id 'jle'
+                    name 'Jonathan Le'
+                    email 'jonathanle@gmail.com'
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     compile "com.android.support:support-v4:18.0.+"
-    compile 'com.actionbarsherlock:actionbarsherlock:4.4.0@aar'
 }

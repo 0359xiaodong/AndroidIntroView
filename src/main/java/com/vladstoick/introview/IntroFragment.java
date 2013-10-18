@@ -1,6 +1,7 @@
 package com.vladstoick.introview;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 /**
  * Created by Vlad on 10/14/13.
  */
-public class IntroFragment extends SherlockFragment {
+public class IntroFragment extends Fragment {
     public static final String TAG_ITEM = "TAGITEM";
 
     TextView mIntroTextView;

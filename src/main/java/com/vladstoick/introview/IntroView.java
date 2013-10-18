@@ -1,6 +1,8 @@
 package com.vladstoick.introview;
 
+
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by Vlad on 10/15/13.
  */
-public class IntroView extends SherlockFragment implements Button.OnClickListener{
+public class IntroView extends Fragment implements Button.OnClickListener{
     public interface OnSkipClickListener{
         public void onSkipClicked();
     }

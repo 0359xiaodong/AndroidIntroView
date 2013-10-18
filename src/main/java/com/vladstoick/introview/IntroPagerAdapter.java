@@ -1,10 +1,9 @@
 package com.vladstoick.introview;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.actionbarsherlock.app.SherlockFragment;
 
 import java.util.ArrayList;
 
@@ -19,8 +18,8 @@ public class IntroPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public SherlockFragment getItem(int i) {
-        SherlockFragment fragment = new IntroFragment();
+    public Fragment getItem(int i) {
+        Fragment fragment = new IntroFragment();
         Bundle arguments = new Bundle();
         arguments.putParcelable(IntroFragment.TAG_ITEM, pages.get(i));
         fragment.setArguments(arguments);
